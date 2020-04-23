@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="game_screen.css">
     <title>Gemstones</title>
   </head>
   <body>
@@ -129,5 +129,35 @@
       </div>
     </div>
     <div id="tempLink"><a href="score_page.html">To Score</a></div>
+
+    <script type="text/javascript">
+      // setup card toggle and scoring logic
+      var current_card = null;
+
+      function flipCard(card) {
+        console.log("flip");
+        if (current_card != null) {
+          
+        }
+        card.classList.toggle('flipped');
+      }
+
+      function flipCardDelegate(card) {
+        return function() {
+          flipCard(card);
+        }
+      }
+
+      // setup cards with flip toggle
+      var cards = document.getElementsByClassName("flip-card-inner");
+      var i;
+      for (i = 0; i < cards.length; i++) {
+        console.log(i);
+        var card = cards[i];
+        card.addEventListener('click', flipCardDelegate(card), false);
+      }
+
+      
+    </script>
   </body>
 </html>

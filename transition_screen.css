@@ -1,5 +1,5 @@
 .fade{
-  animation: fade ease 10s;
+  animation: fade ease 5s;
 }
 
 @keyframes fade{
