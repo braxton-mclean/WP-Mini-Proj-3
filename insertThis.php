@@ -42,9 +42,7 @@ echo "Connection Successful";
 
 $sqlcommand = "INSERT INTO Userdata (UserID, Username,Password,CurrentCardBack, CardBackP1, CardBackP2,CardBackP3, CardBackP4, CardBackP5,
 CardBackP6, CardBackP7, CardBackP8,LatestGameScore,Money,UserShortName) VALUES
-('3', 'Charlie', 'Charlie', '0','0','0','0','0','0','0','0','0','10','10.00','Charlie')";
-
-// wondering how to make it insert iteratively.. hm. because atm it's hardcoded with 3. 
+('3', '$firstname', '$password', '0','0','0','0','0','0','0','0','0','10','10.00','$firstname')";
 
 
 //if query is succesful -using object orientated over procedural.  
