@@ -136,10 +136,34 @@
 
       function flipCard(card) {
         console.log("flip");
-        if (current_card != null) {
-          
-        }
+
         card.classList.toggle('flipped');
+        if (card.classList.contains("flipped")) {
+          if (current_card != null) {
+            var match = false;
+            // check equality of card type
+
+            // check not the same card
+
+            if (match) {
+              // calculate points
+              var new_points = (100 * 1/seconds_since_card_select) - (current_time_secs - secs_since_game_start);
+
+              points = points + new_points;
+
+              if (all_cards_matched) {
+                // do POST request to .php page for database to receive latest game score and time played
+
+                // send the play6er to the Score page automatically after timer.
+              }
+            }
+          } else {
+            // set current_card to selected card
+
+            // set timestamp of select
+          }
+        }
+        
       }
 
       function flipCardDelegate(card) {
@@ -156,8 +180,6 @@
         var card = cards[i];
         card.addEventListener('click', flipCardDelegate(card), false);
       }
-
-      
     </script>
   </body>
 </html>
