@@ -1,8 +1,15 @@
 <!DOCTYPE html>
+
+<?php include 'functionstuff.php';?>
 <html>
+	<head>
+		<title>
+		New User Form
+		</title>
+	</head>
 <body>
 
-<?php include "validateConfirm.php"; ?>
+<!--This is the form for the users to input their data.-->
 
 <link rel="stylesheet" type="text/css" href="Test.css">
 
@@ -11,27 +18,32 @@
 		<p id="smallSize" id="diffFont"></p>
 			<div id="makeBorder">  
 						
-			<form method="POST" action="insertThis.php">
+			<form method="POST" action="functionstuff.php">
 				
+				
+				    <p> New User Registration </p> 
 					<p> Fill in the information below. </p> 
+			
 
-					<label <?php echo ($vfname) ? "class='lbl'" : "class='lbl-red'" ?> >UserName: </label>
-					<input class="usr lg-box" type="text/css" name="firstname" placeholder="First Name" required><br><br>
+					<label class="lbl">UserName: </label>
+					<input class="usr lg-box" type="text/css" name="username" placeholder="Username" required><br><br>
 					
-					<label <?php echo ($vpassword) ? "class='lbl'" : "class='lbl-red'" ?> >Password: </label>
+					<label class="lbl">Password: </label>
 					<input class="usr lg-box" type="text/css" name="password" placeholder="Password" required><br><br>
 					
-				
-					<input class="usr"  type="submit" name="submit" value="Add to Database" > <br> <br> <br> 
-					</a>
+					<label class="lbl">Retype Password for Confirmation: </label>
+					<input class="usr lg-box" type="text/css" name="password_2" placeholder="Confirm Password" required><br><br>
+					
+					<input class="usr"  type="submit" name="submit" value="Register" > <br> <br> <br> 
+					
+				 <!-- <button type="submit" name="submit"> Sign Up </button> -->
+					
+			
 			
 					
 				</form>
 				
 			</div>
 </div>
-
-
-
 </body>
 </html>
