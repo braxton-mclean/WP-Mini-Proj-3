@@ -8,25 +8,43 @@
 <body>
 	<div class="bgimage"></div>
 	<main>
+		
 		<div id="mainContentArea">
 			<div id="scoreDisplay">
 				<div class="gradeHeader">
 					Your Grade: <br>
-					<span class="grade">
+					<span id="grade" class="grade">
 						A+
 					</span>
 				</div><br>
 				Your Score: <br>
-				<span class="score">
+				<span id="score" class="score">
 					100
 				</span><br>
 				Your Time: <br>
-				<span class="time">
+				<span id="time" class="time">
 					1:12
 				</span> 
 			</div>
 			
 		</div>
+
+
+
+		<script type="text/javascript">
+			var parameters = location.search.substring(1).split("&");
+
+		    var temp = parameters[0].split("=");
+
+		    var s = unescape(temp[1]);
+		    temp = parameters[1].split("=");
+		    var g = unescape(temp[1]);
+		    temp = parameters[2].split("=");
+		    var t = unescape(temp[1]);
+		    document.getElementById("score").innerHTML = s;
+		    document.getElementById("grade").innerHTML = g;
+		    document.getElementById("time").innerHTML = t;
+		</script>
 	</main>
 </body>
 </html>

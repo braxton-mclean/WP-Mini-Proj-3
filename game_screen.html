@@ -8,12 +8,12 @@
     <h1 class="page-title">Gemstones Card Game</h1>
     <div id ="jnk1">
       <span id ="pnts">Points: <label id="points-num">0</label></span>
-      <span id="tm">Time | <label id="hours">00</label>:<label id="mins">00</label>:<label id="secs">00</label></span>
+      <span id="tm">Time | <label id = "total-time"><label id="mins">00</label>:<label id="secs">00</label></span></label>
       <script>
-        var hoursL = document.getElementById("hours");
         var minsL = document.getElementById("mins");
         var secsL = document.getElementById("secs");
         var pointsL = document.getElementById("points-num");
+        var totalTimeL = document.getElementById("total-time");
         var points = 0;
         var totalsecs = 0;
         var totalmins = 0; 
@@ -193,10 +193,32 @@
 
               current_card = null;
 
-              var all_cards_matched = false;
+              all_cards_matched = true;
+              for (i = 0; i < cards.length; i++) {
+                var check_card = cards[i];
+                if (!check_card.classList.contains("flipped")) {
+                  all_cards_matched = false;
+                }
+              }
               if (all_cards_matched) {
                 // do POST request to .php page for database to receive latest game score and time played
-
+                var end_grade = "F";
+                if (points > 250) {
+                  end_grade = "S+";
+                } else if (points > 225) {
+                  end_grade = "S";
+                } else if (points > 200) {
+                  end_grade = "A+";
+                } else if (points > 150) {
+                  end_grade = "A";
+                } else if (points > 100) {
+                  end_grade = "B";
+                } else if (points > 75) {
+                  end_grade = "C";
+                }
+                var new_url_loc = 'score_page.html?s='+ (Math.floor(points)).toString() + '&g=' + end_grade + '&t=' + totalTimeL.textContent;
+                console.log(new_url_loc);
+                window.location = new_url_loc;
                 // send the play6er to the Score page automatically after timer.
               }
             } else {
