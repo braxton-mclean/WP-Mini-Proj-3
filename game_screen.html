@@ -185,6 +185,12 @@
               points = points + new_points;
               pointsL.innerHTML = Math.floor(points);
 
+              // toggle classes 
+              card.classList.toggle(card_type);
+              current_card.classList.toggle(card_type);
+              card.style.display = "none";
+              current_card.style.display = "none";
+
               current_card = null;
 
               var all_cards_matched = false;
@@ -193,6 +199,10 @@
 
                 // send the play6er to the Score page automatically after timer.
               }
+            } else {
+              current_card.classList.toggle("flipped");
+              card.classList.toggle("flipped");
+              current_card = null;
             }
           } else {
             // set current_card to selected card
