@@ -20,12 +20,14 @@
   <body>
     <h1 class="page-title">Gemstones Card Game</h1>
     <div id ="jnk1">
-      <span id ="pnts">Points: 00</span>
-      <span id="tm">Time | <label id="hours">00</label>:<label id="mins">00</label>:<label id="secs">00</label></span>
+      <span id ="pnts">Points: <label id="points-num">0</label></span>
+      <span id="tm">Time | <label id = "total-time"><label id="mins">00</label>:<label id="secs">00</label></span></label>
       <script>
-        var hoursL = document.getElementById("hours");
         var minsL = document.getElementById("mins");
         var secsL = document.getElementById("secs");
+        var pointsL = document.getElementById("points-num");
+        var totalTimeL = document.getElementById("total-time");
+        var points = 0;
         var totalsecs = 0;
         var totalmins = 0; 
         setInterval(timer, 1000);
@@ -54,89 +56,89 @@
     <br>
     <div class="game-container">
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner green">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card1</h1> 
+          <div class="flip-card-back flip-green">
+             
           </div>
         </div>
       </div>
 
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner green">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card2</h1> 
+          <div class="flip-card-back flip-green">
+            
           </div>
         </div>
       </div>
 
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner pink">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card3</h1> 
+          <div class="flip-card-back flip-pink">
+            
           </div>
         </div>
       </div>
 
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner blue">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card1</h1> 
+          <div class="flip-card-back flip-blue">
+            
           </div>
         </div>
       </div>
 
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner pink">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card2</h1> 
+          <div class="flip-card-back flip-pink">
+             
           </div>
         </div>
       </div>
 
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner blue">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card3</h1> 
+          <div class="flip-card-back flip-blue">
+            
           </div>
         </div>
       </div>
 
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner green">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card1</h1> 
+          <div class="flip-card-back flip-green">
+            
           </div>
         </div>
       </div>
 
       <div class="flip-card">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner green">
           <div class="flip-card-front">
           </div>
 
-          <div class="flip-card-back">
-            <h1>card1</h1> 
+          <div class="flip-card-back flip-green">
+            
           </div>
         </div>
       </div>
@@ -146,6 +148,7 @@
     <script type="text/javascript">
       // setup card toggle and scoring logic
       var current_card = null;
+      var seconds_since_card_select = 0;
 
       function flipCard(card) {
         console.log("flip");
@@ -154,26 +157,93 @@
         if (card.classList.contains("flipped")) {
           if (current_card != null) {
             var match = false;
-            // check equality of card type
-
+            var card_type = "";
             // check not the same card
+            if (current_card == card) {
+              return;
+            } else {
+              // check equality of card type
+              if (card.classList.contains("blue")) {
+                if (current_card.classList.contains("blue")) {
+                  match = true;
+                  card_type = "blue";
+                }
+              }
+              if (card.classList.contains("green")) {
+                if (current_card.classList.contains("green")) {
+                  match = true;
+                  card_type = "green";
+                }
+              }
+              if (card.classList.contains("pink")) {
+                if (current_card.classList.contains("pink")) {
+                  match = true;
+                  card_type = "pink";
+                }
+              }
+            }
 
             if (match) {
               // calculate points
-              var new_points = (100 * 1/seconds_since_card_select) - (current_time_secs - secs_since_game_start);
+              var divisor = Math.floor(seconds_since_card_select);
+              if (divisor < 1) {
+                divisor = 1;
+              }
+              var new_points = (100 * 1/divisor) - (totalsecs - seconds_since_card_select);
+
+              if (new_points < 0) {
+                new_points = 0;
+              }
 
               points = points + new_points;
+              pointsL.innerHTML = Math.floor(points);
 
+              // toggle classes 
+              card.classList.toggle(card_type);
+              current_card.classList.toggle(card_type);
+              card.style.display = "none";
+              current_card.style.display = "none";
+
+              current_card = null;
+
+              all_cards_matched = true;
+              for (i = 0; i < cards.length; i++) {
+                var check_card = cards[i];
+                if (!check_card.classList.contains("flipped")) {
+                  all_cards_matched = false;
+                }
+              }
               if (all_cards_matched) {
                 // do POST request to .php page for database to receive latest game score and time played
-
+                var end_grade = "F";
+                if (points > 250) {
+                  end_grade = "S+";
+                } else if (points > 225) {
+                  end_grade = "S";
+                } else if (points > 200) {
+                  end_grade = "A+";
+                } else if (points > 150) {
+                  end_grade = "A";
+                } else if (points > 100) {
+                  end_grade = "B";
+                } else if (points > 75) {
+                  end_grade = "C";
+                }
+                var new_url_loc = 'score_page.html?s='+ (Math.floor(points)).toString() + '&g=' + end_grade + '&t=' + totalTimeL.textContent;
+                console.log(new_url_loc);
+                window.location = new_url_loc;
                 // send the play6er to the Score page automatically after timer.
               }
+            } else {
+              current_card.classList.toggle("flipped");
+              card.classList.toggle("flipped");
+              current_card = null;
             }
           } else {
             // set current_card to selected card
-
+            current_card = card;
             // set timestamp of select
+            seconds_since_card_select = totalsecs;
           }
         }
         
