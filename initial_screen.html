@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="initial_screen.css">
+	<title>GEMSTONES</title>
+</head>
+<body class="mainContent">
+	<div class="bgimage"></div>
+	<img src="GEMSTONES.png" class="centerImg">
+	<div id="loginSpace">
+		<a href="login_screen.html"> 
+		<img src="login.gif" alt="Alternative Text" class="centerImg smallerGif" onclick="login_screen.html">
+		</a> 
+	</div>
+	<script type="text/javascript">
+
+	/**	var userid = getCookie("userid");
+		var loginSpace = document.getElementById("loginSpace");
+		if (userid != null) {
+			loginSpace.innerHTML = "Welcome back, " + userid + "!";
+		} else {
+			loginSpace.innerHTML = "Don't forget to log in!" + loginSpace.innerHTML;
+		}
+
+		function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+		    
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+		        if(name == cookiePair[0].trim()) {
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+		    
+		    return null;
+		}
+
+		function checkLocalData() {
+		    var userid = getCookie("userid");
+		    var loginSpace = document.getElementById("loginSpace");
+
+		    if (userid == null) {
+		    	// redirect to the login screen
+		        window.location.href = "login_screen.html";
+		    }
+		    else {
+		        loginSpace.innerHTML = "" + userid;
+		    }
+		} **/
+	</script> 
+	
+	<br>
+	<A HREF ="startscreen.html">
+		<img src="startAnim.gif" alt="Alternative Text" class="centerImg smallerGif">
+	</A>
+	<br>
+	<br>
+	<br>
+	<br>
+	<A HREF ="end_screen.html">
+		<img src="EXIT.gif" alt="Alternative Text" class="centerImg smallerGif">
+	</A> 
+	<br>
+
+	<div id="dateCalculator">
+		<p> Do you want to know how many days are left until the end of the semester?</p>
+		Today's Date: <span id="todayString"></span>
+		<br>
+		End Day: <span id="endString"></span>
+		<br>
+		Days Remaining: <span id="differenceString"></span>
+		<br>
+		<button onclick="countDays()">Answer</button> 
+		<p id="answer"></p>
+			
+		<!-- Javascript for Timer Count --> 
+		<script> 
+			function countDays(){
+				var today = new Date(); 
+			    var endDay = new Date("4/27/2020");
+
+			    var todayString = document.getElementById("todayString");
+			    var endString = document.getElementById("endString");
+			    var differenceString = document.getElementById("differenceString");
+			    
+			    
+			    todayString.innerHTML = "" + today.toLocaleDateString();
+			    endString.innerHTML = "" + endDay.toLocaleDateString(); 
+
+			    var day = 60*60*24*1000; 
+			    var numDays = (endDay - today)/day;
+			    differenceString.innerHTML = "" + Math.ceil(numDays);
+			}
+		</script>
+	</div>
+	
+
+	<img src="crystals.png" class="centerImg smallerGif footerImg">
+</body>
+</html>

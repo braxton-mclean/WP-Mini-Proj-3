@@ -4,25 +4,25 @@
 <html>
 	<head>
 		<title>
-		New User Form
+		Returning User Form
 		</title>
 	</head>
 <body>
 
 <!--This is the form for the users to input their data.-->
 
-<link rel="stylesheet" type="text/css" href="Test.css">
+<link rel="stylesheet" type="text/css" href="Test2.css">
 
 <div align="center" > 
-	<div class="newUser"> <h1>New User Log In: </h1> </div>
+	<div class="newUser"> <h1>Welcome Back ! </h1> </div>
 		<p id="smallSize" id="diffFont"></p>
 			<div id="makeBorder">  
 						
-			<form method="POST" action="functionstuff.php">
+			<form method="POST" action="loggedin.php">
 				
 				
-				    <p> New User Registration </p> 
-					<p> Fill in the information below. </p> 
+				    <p> </p> 
+					<p> Please Enter your credentials.</p> 
 			
 
 					<label class="lbl">UserName: </label>
@@ -34,8 +34,8 @@
 					<label class="lbl">Retype Password for Confirmation: </label>
 					<input class="usr lg-box" type="text/css" name="password_2" placeholder="Confirm Password" required><br><br>
 					
-					<input class="usr"  type="submit" name="submit" value="Register" > <br> <br>
-					<input class="usr" type="button" value="Already a user? Return back to home" onclick="history.back()"> <br><br> <br> 
+					<input class="usr"  type="submit" name="submit" value="Log In" > <br> <br>
+					<input class="usr" type="button" value="Go Back" onclick="history.back()"> <br><br> <br> 
 				 <!-- <button type="submit" name="submit"> Sign Up </button> -->
 					
 			

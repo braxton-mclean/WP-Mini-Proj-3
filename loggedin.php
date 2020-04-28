@@ -23,13 +23,13 @@ if ($conn->connect_error) {
 		$username = mysqli_real_escape_string($conn, $_POST['username']);  // prevent mysql injection 
 		$password = mysqli_real_escape_string($conn, $_POST['password']);
 		$password_2 = mysqli_real_escape_string($conn, $_POST['password_2']);
-		
+		$_SESSION['username'] =$_POST['username']; 
 
 		if ($password == $password_2) {
 			$password = md5($password_2); //tried to Hash for more password protection. 
 			mysqli_select_db($conn, "mpalad1"); 
-			$sqlcommand = "INSERT INTO database3(Username,Password,Password2) VALUES('$username', '$password','$password_2');"; 
-			mysqli_query($conn,$sqlcommand);  
+	// change here. 		$sqlcommand = "INSERT INTO database3(Username,Password,Password2) VALUES('$username', '$password','$password_2');"; 
+	//		mysqli_query($conn,$sqlcommand);  
 			header ('Location:game_screen.php'); 
 			
 			if (!mysqli_query($conn, "SET a=1")) { // states error if the query can't get inputted

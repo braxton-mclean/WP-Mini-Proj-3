@@ -1,0 +1,55 @@
+body{
+	font-family: arial;
+	background: rgb(84,38,116);
+background: linear-gradient(4deg, rgba(84,38,116,1) 0%, rgba(43,0,255,1) 0%, rgba(28,45,185,1) 0%, rgba(215,250,255,1) 80%);
+}
+
+@font-face {
+	src: url(Xolonium-Bold.otf);
+	font-family: userFont;
+	
+	
+}
+
+.newUser {
+	font-family: userFont; 
+}
+
+
+.lbl{
+	position: absolute;
+	right: 53%;
+}
+
+.lbl-red{
+	color: red;
+	position: absolute;
+	right: 53%;
+}
+
+.usr{
+	position: absolute;
+	left: 48%
+}
+
+.lg-box{
+	width: 20%;
+}
+
+.red{
+	color: red;
+}
+
+.invalid{
+	color: red;
+}
+
+.sml-box{
+	width: 3%;
+}
+
+#makeBorder {
+	border-style: outset; 
+	padding: 30px;
+		/*padding: 30px 30px 30px 30px;*/
+}
