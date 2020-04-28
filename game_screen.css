@@ -123,8 +123,20 @@ body {
   color: black;
 }
 
+.flip-green {
+  background-image: url("CardsArt/ver1green.png");
+}
+
+.flip-pink {
+  background-image: url("CardsArt/ver3pink.png");
+}
+
+.flip-blue {
+  background-image: url("CardsArt/ver2blue.png");
+}
+
 .flip-card-back {
-  background-image: url("CardsArt/ver1pink.png");
+  
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
