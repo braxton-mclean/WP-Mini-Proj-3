@@ -8,7 +8,7 @@
 	if (isset($_SESSION['username'])){
 		echo "Welcome Back, ".$_SESSION['username'] ; 
 	}
-	 ?> 
+?> 
 
 
 <!DOCTYPE html>
@@ -160,6 +160,7 @@
             var card_type = "";
             // check not the same card
             if (current_card == card) {
+              current_card = null;
               return;
             } else {
               // check equality of card type
