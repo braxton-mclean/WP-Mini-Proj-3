@@ -11,7 +11,7 @@
 
 <!--This is the form for the users to input their data.-->
 
-<link rel="stylesheet" type="text/css" href="Test.css">
+<link rel="stylesheet" type="text/css" href="Test3.css">
 
 <div align="center" > 
 	<div class="newUser"> <h1> Account Deletion </h1> </div>
